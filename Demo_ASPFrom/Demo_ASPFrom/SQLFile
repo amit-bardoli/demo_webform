@@ -1,0 +1,222 @@
+
+
+/****** Object:  StoredProcedure [dbo].[pr_GetCityList]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_GetCityList]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_SaveRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_SaveRegistrationData]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_GetReg_DemoList]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_GetReg_DemoList]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_DeleteRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_DeleteRegistrationData]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_GetRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_GetRegistrationData]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_UpdateRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+DROP PROCEDURE [dbo].[pr_UpdateRegistrationData]
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_UpdateRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_UpdateRegistrationData]
+	  @Id int,
+	  @Name nvarchar(50),
+      @Password nvarchar(50),
+      @City nvarchar(50),
+      @Gender nvarchar(50),
+      @Email nvarchar(50),
+      @Image nvarchar(50),
+      @Status char(1),
+      @Salary decimal(18,2),
+      @Birthdate datetime
+AS
+BEGIN
+	UPDATE [dbo].[tbl_Reg_Demo]
+   SET [Name] = @Name
+      ,[Password] = @Password
+      ,[City] = @City
+      ,[Gender] = @Gender
+      ,[Email] = @Email
+      ,[Image] = @Image
+      ,[Status] = @Status
+      ,[Salary] = @Salary
+      ,[Birthdate] = @Birthdate
+ WHERE id = @Id
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_GetRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_GetRegistrationData]
+	@Id int
+	
+AS
+BEGIN
+	Select * from tbl_Reg_Demo where id = @Id
+	
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_DeleteRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_DeleteRegistrationData]
+	@Id int,
+	@Image Nvarchar(200) output
+AS
+BEGIN
+	Select @Image = Image from tbl_Reg_Demo where id = @Id
+	Delete tbl_Reg_Demo where id = @Id
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_GetReg_DemoList]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_GetReg_DemoList]
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select 
+		[Id]
+      ,[Name]
+      ,[Password]
+      ,[City]
+      ,[Gender]
+      ,[Email]
+      ,[Image]
+      ,[Status]
+      ,[Salary]
+      ,[Birthdate]
+	from  tbl_Reg_Demo
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_SaveRegistrationData]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_SaveRegistrationData]
+	@Name nvarchar(50),
+	@Password nvarchar(50),
+	@City nvarchar(50),
+	@Gender nvarchar(50),
+	@Email nvarchar(50),
+	@Image nvarchar(50),
+	@Status nvarchar(50),
+	@Salary nvarchar(50),
+	@Birthdate nvarchar(50)	
+AS
+BEGIN	
+	
+    Insert Into tbl_Reg_Demo 
+	( [Name]
+      ,[Password]
+      ,[City]
+      ,[Gender]
+      ,[Email]
+      ,[Image]
+      ,[Status]
+      ,[Salary]
+      ,[Birthdate]) Values
+	  (
+		@Name,
+		@Password,
+		@City,
+		@Gender,
+		@Email,
+		@Image,
+		@Status,
+		@Salary,
+		@Birthdate
+	  )
+	--SELECT @@IDENTITY
+	
+END
+GO
+
+/****** Object:  StoredProcedure [dbo].[pr_GetCityList]    Script Date: 01/03/2024 5:20:21 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[pr_GetCityList]
+@id int	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	Select  id,Name from EmirateList --where id = @id
+END
+GO
+
+
