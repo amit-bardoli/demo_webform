@@ -1,0 +1,6 @@
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\bin\Demo_ASPFrom.dll.config
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\bin\Demo_ASPFrom.dll
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\bin\Demo_ASPFrom.pdb
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\obj\Debug\Demo_ASPFrom.csprojResolveAssemblyReference.cache
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\obj\Debug\Demo_ASPFrom.dll
+D:\Amit\Demo_ASPFrom\Demo_ASPFrom\obj\Debug\Demo_ASPFrom.pdb
